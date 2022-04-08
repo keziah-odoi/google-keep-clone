@@ -64,14 +64,20 @@ main {
             margin-top: 10px;
             padding: 10px;
             display: grid;
-            grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 20%;
-            .close{
-                text-align: end;
-            }
+            grid-template-columns: 90%  10%;
+
+            .icons{
+            display: grid;
+            grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 30%;
             i{
                 font-size: 15px;
                 color: rgb(63, 62, 62);
             }
+            }
+            .close{
+                text-align: end;
+            }
+           
         }
     }
     }

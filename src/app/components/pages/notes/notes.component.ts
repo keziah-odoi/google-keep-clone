@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-notes',
@@ -10,14 +11,24 @@ export class NotesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.toggleNoteDisplay()
   }
 
-  showArea(){
+  showNote(){
     this.isVisible = true;
   }
+ 
+  toggleNoteDisplay(){
+    $('#takenote').on("click",function(e){
+      e.stopPropagation(); // Prevent bubbling
+    });
+    $(document).on("click",()=>{
+     this.isVisible = false
+    });
+   }
 
- revert(){
-   this.isVisible = false;
- }
+   closeNote(){
+     this.isVisible = false
+   }
 
 }
