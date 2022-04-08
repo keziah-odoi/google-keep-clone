@@ -1,0 +1,32 @@
+<main>
+    <div class="note">
+        <div class="note-parent">
+            <div class="take-note"  (blur)="revert()" tabindex="0">
+                <div class="title" *ngIf="isVisible">
+                    <input type="text" class="input-box" placeholder="Title"  autofocus>
+                    <i class="fa-solid fa-thumbtack"></i>
+                                 </div>
+                <div class="main-input" (click)="showArea()">
+                    <input type="text" class="input-box" placeholder="Take a note..." autofocus>
+                    <ng-container *ngIf="!isVisible">
+                        <i class="fa-regular fa-square-check"></i>
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <i class="fa-regular fa-image"></i>
+                    </ng-container>
+                </div>
+               
+                <div class="icon-area"  *ngIf="isVisible">
+                    <i class="fa-regular fa-bell"></i>
+                    <i class="fa-solid fa-user-plus"></i>
+                    <i class="fa-solid fa-palette"></i>
+                    <i class="fa-regular fa-image"></i>
+                    <i class="fa-solid fa-box-archive"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span class="close">Close</span>
+                </div>
+             </div>
+        </div>
+    </div>
+</main>
