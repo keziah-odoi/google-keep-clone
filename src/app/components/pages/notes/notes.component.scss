@@ -1,0 +1,86 @@
+main {
+    position: absolute;
+    left: 20%;
+    width: 80%;
+    height: 100%;
+   
+    .note {
+        margin-top: 20px;
+        .note-parent{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        .take-note {
+            align-items: center;
+            max-height: 140px;
+            width: 600px;
+            padding: 5px 0 5px 15px;
+            border-radius: 10px;
+            // box-shadow: 1px 2px 2px 1px rgba(115, 115, 115, 0.5);
+            box-shadow: 5px 5px 10px 1px rgba(115, 115, 115, 0.4);
+            .title{
+                display: grid;
+                grid-template-columns: 90% 10%;
+                padding: 5px;
+
+                .input-box {
+                    width: 70%;
+                    height: 30px;
+                    border: none;
+                    font-size: 15px;
+                }
+    
+                .input-box:focus {
+                    outline: none;
+                }
+                i{
+                    font-size: 20px;
+                    color: rgb(63, 62, 62);
+                }
+            }
+            .main-input{
+                align-items: center;
+                padding: 5px;
+                display: grid;
+                grid-template-columns: 70% 10% 10% 10%;
+    
+            .input-box {
+                z-index: 99;
+                width: 70%;
+                height: 30px;
+                border: none;
+                font-size: 15px;
+            }
+
+            .input-box:focus {
+                outline: none;
+            }
+            i{
+                font-size: 20px;
+                color: rgb(63, 62, 62);
+            }
+        }
+        .icon-area{
+            margin-top: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 90%  10%;
+
+            .icons{
+            display: grid;
+            grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 30%;
+            i{
+                font-size: 15px;
+                color: rgb(63, 62, 62);
+            }
+            }
+            .close{
+                text-align: end;
+            }
+           
+        }
+    }
+    }
+}
+
+}
