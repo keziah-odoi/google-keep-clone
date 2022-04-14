@@ -31,31 +31,38 @@
 
         .note-title {
             font-size: 12px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+            display: grid;
+            // flex-direction: row;
+            grid-template-columns: 80% 20%;
+            // align-items: center;
+            // justify-content: space-between;
 
             h3 {
                 padding: 3px;
                 width: 90%;
                 word-wrap: none;
+                margin-top: 7px;
+
             }
 
 
             .thumbtack {
                 position: absolute;
-                top: 15px;
+                top: 7px;
                 right: 20px;
                 font-size: 20px;
                 color: $light-theme-icon-color;
                 padding: 3px;
                 visibility: hidden;
+             
             }
         }
 
         .note-body {
             font-size: smaller;
+            margin-top: 0;
+            margin-bottom: 10px;
+
         }
 
         .note-footer {
