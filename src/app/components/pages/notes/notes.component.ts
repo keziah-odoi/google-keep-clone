@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import mockData from '../../../../assets/data/mockData.json';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-notes',
@@ -8,10 +9,14 @@ import * as $ from 'jquery';
 })
 export class NotesComponent implements OnInit {
  isVisible:boolean = false;
+ noteData = mockData;
+ 
   constructor() { }
 
   ngOnInit(): void {
     this.toggleNoteDisplay()
+    console.log(this.noteData)
+    console.log(this.noteData[0].note_title)
   }
 
   showNote(){

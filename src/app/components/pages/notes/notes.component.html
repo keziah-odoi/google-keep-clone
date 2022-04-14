@@ -34,4 +34,12 @@
              </div>
         </div>
     </div>
+
+    <div class="card-container">
+        <app-note-card *ngFor="let data of noteData"
+        [title]="data.note_title" [description]="data.note_body"></app-note-card>
+        
+
+    </div>
+    
 </main>

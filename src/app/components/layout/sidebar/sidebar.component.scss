@@ -1,44 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-.container{
+.container {
     position: fixed;
+    top: 10%; ///
+    left: 0;
     width: 280px;
     height: 100%;
     padding-top: 8px;
-    .upper{
+    z-index: 0;
+
+    .upper {
         height: 90%;
-        div{
+
+        div {
             height: 48px;
             display: grid;
             grid-template-columns: 20% 35% 45%;
             align-items: center;
             border-radius: 0 22px 22px 0;
             cursor: pointer;
-            i{
+
+            i {
                 text-align: center;
                 font-size: 20px;
             }
-            span{
+
+            span {
                 letter-spacing: .01785714em;
-                font-family: 'Open Sans', sans-serif;                font-size: .975rem;
+                font-family: 'Open Sans', sans-serif;
+                font-size: .975rem;
                 font-weight: 500;
                 line-height: 1.25rem;
                 padding-left: 10px;
                 font-weight: 600;
             }
-          
+
         }
-        div:hover{
-           background-color: #f1f3f4;
+
+        div:hover {
+            background-color: #f1f3f4;
         }
-        .router-link-active{
+
+        .router-link-active {
             background-color: #feefc3;
         }
     }
 
-    .lower{
+    .lower {
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif;                font-size: .975rem;
+        font-family: 'Open Sans', sans-serif;
+        font-size: .975rem;
 
     }
 }
