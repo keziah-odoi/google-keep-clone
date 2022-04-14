@@ -4,11 +4,11 @@
             <!-- (mouseleave)="revert()"  -->
             <div class="take-note"  tabindex="0" id="takenote">
                 <div class="title" *ngIf="isVisible">
-                    <input type="text" class="input-box" placeholder="Title" >
+                    <input [(ngModel)]="title" name="title" type="text" class="input-box" placeholder="Title" >
                     <i class="fa-solid fa-thumbtack"></i>
                                  </div>
                 <div class="main-input">
-                    <input type="text" class="input-box" placeholder="Take a note..." (click)="showNote()">
+                    <textarea [(ngModel)]="description" name="description" type="text" class="textarea" placeholder="Take a note..." (click)="showNote()" contentEditable></textarea>
                     <ng-container *ngIf="!isVisible">
                         <i class="fa-regular fa-square-check"></i>
                         <i class="fa-solid fa-paintbrush"></i>
@@ -36,8 +36,8 @@
     </div>
 
     <div class="card-container">
-        <app-note-card *ngFor="let data of noteData"
-        [title]="data.note_title" [description]="data.note_body"></app-note-card>
+        <app-note-card *ngFor="let data of notesData"
+        [title]="data.title" [description]="data.description"></app-note-card>
         
 
     </div>
