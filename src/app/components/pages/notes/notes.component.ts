@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import $ from 'jquery';
 import { NotesService } from 'src/app/services/notes/notes.service';
-import { Notesdata } from 'src/app/classes/notesdata/notesdata';
+import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-notes',
@@ -13,16 +15,31 @@ export class NotesComponent implements OnInit {
   title : string = "";
   description : string = "";
   userID = localStorage.getItem('userID')
-  // notesData : Notesdata = new Notesdata()
-  notesData:any
+  user: SocialUser = new SocialUser;
+  loggedIn?: boolean;
+  data:any
+  notesData:any[] = []
+  pipe = new DatePipe('en-US');
+  todayWithPipe : any;
+  sortedArray : any[] = [];
   constructor(
-    private noteService: NotesService
-  ) { }
+    private noteService: NotesService,
+    private authService: SocialAuthService,
+    private authentication : AuthService
+  ) { 
+    this.data = JSON.parse(localStorage.getItem('user') || '{}');
+
+  }
 
   ngOnInit() {
     this.toggleNoteDisplay()
     this.getNotes()
     this.resize()
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(this.user)
+      this.loggedIn = (user != null);
+    });
   }
 
 
@@ -32,27 +49,28 @@ export class NotesComponent implements OnInit {
       return
     }
    
-    if (localStorage.getItem('userID') == null) {
-      const userID = this.generateID()
-           localStorage.setItem('userID', userID)
-           const payload = {
-            "userID" : userID,
-            "title" : this.title,
-             "description" : this.description
-          }
-          this.noteService.addNote(payload).subscribe(
-            {next :(data:any)=>{
-                console.log("Successful")
-                this.clearFields()
-            },
-            error :(e) =>{
-                console.log("failed")
-            }
-          }
-          )
+    if (this.data == null) {
+      // const userID = this.generateID()
+      //      localStorage.setItem('userID', userID)
+      //      const payload = {
+      //       "userID" : userID,
+      //       "title" : this.title,
+      //        "description" : this.description
+      //     }
+      //     this.noteService.addNote(payload).subscribe(
+      //       {next :(data:any)=>{
+      //           console.log("Successful")
+      //           this.clearFields()
+      //       },
+      //       error :(e) =>{
+      //           console.log("failed")
+      //       }
+      //     }
+      //     )
+      return
     }
           const payload = {
-          "userID" : this.userID,
+          "userID" : this.data.id,
           "title" : this.title,
             "description" : this.description
         }
@@ -72,19 +90,23 @@ export class NotesComponent implements OnInit {
   }
 
   getNotes(){
-      if(this.userID !== null){
-     this.noteService.getNotes(this.userID).subscribe(
+      if(this.data !== null){
+     this.noteService.getNotes(this.data.id).subscribe(
        {
          next :(data :any)=>{
            this.notesData = data
-           console.log(data)
-         },
+           this.notesData = this.notesData.reverse()
+           console.log(this.notesData)
+                   },
         error:(e)=>{
           console.log(e)
         }})
   }
   return 
 }
+// sortData(){
+//   // this.notesData.sort((a,b) =>{ return <any>new Date(b.creationDate)- <any>new Date(a.creationDate)}).forEach((x)=> this.sortedArray.push(x))
+// }
 
   generateID():string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -124,5 +146,17 @@ export class NotesComponent implements OnInit {
     $('.textarea').resize()
 
   }
+
+  signInWithGoogle(){
+    this.authentication.signInWithGoogle()
+    this.getNotes()
+  }
+
+  logout(){
+    this.authentication.signOut()
+    localStorage.removeItem('user')
+    this.getNotes()
+  }
+ 
  
 }

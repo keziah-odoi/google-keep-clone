@@ -1,5 +1,8 @@
 <main>
     <div class="note">
+        <div>
+            <h4 *ngIf="data.name">Hi, {{ data.name }}</h4>
+          </div>
         <div class="note-parent">
             <!-- (mouseleave)="revert()"  -->
             <div class="take-note"  tabindex="0" id="takenote">
@@ -40,6 +43,10 @@
         [title]="data.title" [description]="data.description"></app-note-card>
         
 
+    </div>
+    <div>
+        <button (click)="signInWithGoogle()">Login</button>
+        <button (click)="logout()">Logout</button>
     </div>
     
 </main>
