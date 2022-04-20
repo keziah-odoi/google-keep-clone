@@ -26,15 +26,12 @@
     <button><i class="fa-solid fa-gear"></i></button>
    </div>
 
-   <!-- <div class="menu-grid">
-       <button><i class="fa-solid fa-grid"></i></button>
-    
-   </div>
-
-  <div class="user-profile">
-
-  </div> -->
    
-  <div class="user-div"></div>
+  <div class="user-div">
+      <div class="profile">
+            <img  *ngIf="data.photoUrl" [src]="data.photoUrl">
+        </div>
+      </div>
+
 
 </nav>

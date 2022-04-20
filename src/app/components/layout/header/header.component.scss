@@ -120,10 +120,22 @@ button {
 
     }
 
-    // .user-div {
-    //     display: flex;
-    //     flex-direction: row;
-    //     width: 100%;
-    //     background-color: aqua;
-    // }
+    .user-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .profile{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: grey;
+
+            img{
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+            }
+        }
+    }
 }
