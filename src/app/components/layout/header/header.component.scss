@@ -53,6 +53,8 @@ button {
 
             span {
                 font-size: 21px;
+                color: rgb(71, 68, 68);
+                font-weight: 400;
             }
 
         }
@@ -126,14 +128,25 @@ button {
         width: 100%;
 
         .profile{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 40px;
             width: 40px;
             border-radius: 50%;
-            background-color: grey;
+            background-color: rgb(216, 27, 96);
+         
+        .fa-user{
+            color: white;
+        }
+            .letter{
+               font-size: 25px;
+                color: white;
+            }
 
             img{
-                height: 40px;
-                width: 40px;
+                height: 45px;
+                width: 45px;
                 border-radius: 50%;
             }
         }

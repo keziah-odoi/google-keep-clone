@@ -11,7 +11,7 @@
                     <i class="fa-solid fa-thumbtack"></i>
                                  </div>
                 <div class="main-input">
-                    <textarea [(ngModel)]="description" name="description" type="text" class="textarea" placeholder="Take a note..." (click)="showNote()" contentEditable></textarea>
+                    <textarea [(ngModel)]="description" name="description" type="text" class="textarea" placeholder="Take a note..." (click)="showNote()" onInput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
                     <ng-container *ngIf="!isVisible">
                         <i class="fa-regular fa-square-check"></i>
                         <i class="fa-solid fa-paintbrush"></i>
@@ -48,5 +48,5 @@
         <button (click)="signInWithGoogle()">Login</button>
         <button (click)="logout()">Logout</button>
     </div>
-    
+
 </main>

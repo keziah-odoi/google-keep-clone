@@ -17,8 +17,8 @@ export class NotesComponent implements OnInit {
   userID = localStorage.getItem('userID')
   user: SocialUser = new SocialUser;
   loggedIn?: boolean;
-  data:any
-  notesData:any[] = []
+  data:any;
+  notesData:any[] = [];
   pipe = new DatePipe('en-US');
   todayWithPipe : any;
   sortedArray : any[] = [];
@@ -28,45 +28,29 @@ export class NotesComponent implements OnInit {
     private authentication : AuthService
   ) { 
     this.data = JSON.parse(localStorage.getItem('user') || '{}');
-
+  
   }
 
   ngOnInit() {
     this.toggleNoteDisplay()
     this.getNotes()
-    this.resize()
     this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log(this.user)
       this.loggedIn = (user != null);
     });
+    this.textarea()
+
   }
 
 
   addNote() {
+    this.resizeTextArea()
     if(this.title == "" && this.description == ""){
-      console.log("fields empty")
       return
     }
    
     if (this.data == null) {
-      // const userID = this.generateID()
-      //      localStorage.setItem('userID', userID)
-      //      const payload = {
-      //       "userID" : userID,
-      //       "title" : this.title,
-      //        "description" : this.description
-      //     }
-      //     this.noteService.addNote(payload).subscribe(
-      //       {next :(data:any)=>{
-      //           console.log("Successful")
-      //           this.clearFields()
-      //       },
-      //       error :(e) =>{
-      //           console.log("failed")
-      //       }
-      //     }
-      //     )
       return
     }
           const payload = {
@@ -104,9 +88,6 @@ export class NotesComponent implements OnInit {
   }
   return 
 }
-// sortData(){
-//   // this.notesData.sort((a,b) =>{ return <any>new Date(b.creationDate)- <any>new Date(a.creationDate)}).forEach((x)=> this.sortedArray.push(x))
-// }
 
   generateID():string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -142,9 +123,11 @@ export class NotesComponent implements OnInit {
     this.title = "";
   }
 
-  resize(){
-    $('.textarea').resize()
+  resizeTextArea(){
+    $(".note").on('click', function(){
+      $(".textarea").css('height','20px');
 
+    });
   }
 
   signInWithGoogle(){
@@ -158,5 +141,13 @@ export class NotesComponent implements OnInit {
     this.getNotes()
   }
  
+  textarea(){
+    $(".textarea").on('input', function() {
+      var scroll_height = $(".textarea").get(0)?.scrollHeight;
+    
+      $(".textarea").css('height', scroll_height + 'px');
+    });
+
+  }
  
 }

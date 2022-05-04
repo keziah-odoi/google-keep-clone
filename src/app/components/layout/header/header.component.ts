@@ -10,11 +10,14 @@ export class HeaderComponent implements OnInit {
   user: SocialUser = new SocialUser;
   loggedIn: boolean = true;
   data:any
+  userNameLetter: any;
   constructor(
     private authService: SocialAuthService,
 
   ) { 
     this.data = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userNameLetter = this.data.firstName?.charAt(0)
+    console.log(this.userNameLetter)
   }
 
   ngOnInit(): void {

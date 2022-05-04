@@ -29,6 +29,8 @@
    
   <div class="user-div">
       <div class="profile">
+             <i class="fa-solid fa-user" *ngIf="!data.photoUrl && !userNameLetter"></i>
+             <span *ngIf="data && !data.photoUrl" class="letter">{{userNameLetter}}</span>
             <img  *ngIf="data.photoUrl" [src]="data.photoUrl">
         </div>
       </div>
